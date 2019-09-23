@@ -9,8 +9,12 @@
   end
 %>
 <div id="vue-todo" data-init=<%= init_data.to_json %>>
+  <div class="my-4">
+    <%= render 'links' %>
+  </div>
+
   <div
-    v-for="todo in todos"
+    v-for="todo in filteredTodos"
     :key="`todo-${todo.id}`"
     class="flex flex-wrap justify-between py-2 text-xl border-t last:border-b border-gray-300"
   >

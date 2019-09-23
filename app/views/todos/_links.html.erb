@@ -1,0 +1,23 @@
+<div class="flex flex-wrap justify-center items-center">
+  <%
+    link_class = 'mx-4 hover:underline cursor-pointer'
+  %>
+  <a class="mx-4 hover:underline cursor-pointer text-blue-500"
+     @click="changeFilter(null)"
+     :class="{underline: filterBy.status === null}"
+  >
+    All
+  </a>
+  <a class="mx-4 hover:underline cursor-pointer text-orange-500"
+     @click="changeFilter('in_progress')"
+     :class="{underline: filterBy.status === 'in_progress'}"
+  >
+    In Progress
+  </a>
+  <a class="mx-4 hover:underline cursor-pointer text-teal-500"
+     @click="changeFilter('done')"
+     :class="{underline: filterBy.status === 'done'}"
+  >
+    Done
+  </a>
+</div>

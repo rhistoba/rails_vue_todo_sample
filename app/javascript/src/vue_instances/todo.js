@@ -9,7 +9,10 @@ document.addEventListener('turbolinks:load', () => {
     el: el,
     data() {
       return {
-        todos: []
+        todos: [],
+        filterBy: {
+          status: null
+        }
       }
     },
     mounted() {
@@ -29,6 +32,16 @@ document.addEventListener('turbolinks:load', () => {
         }).then(response => {
           Turoblinks.visit('/')
         })
+      },
+      changeFilter(status) {
+        this.filterBy.status = status
+      }
+    },
+    computed: {
+      filteredTodos() {
+        return this.filterBy.status
+          ? this.todos.filter(todo => todo.status === this.filterBy.status)
+          : this.todos
       }
     }
   })
