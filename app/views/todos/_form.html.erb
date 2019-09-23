@@ -1,11 +1,9 @@
-<%= form_with model: @new_todo, local: true, class: 'flex flex-wrap items-center' do |f| %>
+<%= form_with model: @new_todo, local: true, class: 'flex flex-wrap justify-between items-center' do |f| %>
   <div class="w-6/12 pr-2">
     <%= f.text_field :title, class: 'w-full p-2 border border-gray-500 rounded', placeholder: 'New Todo' %>
   </div>
   <div class="w-4/12 pr-2">
-    <%= f.datetime_field :deadline, class: 'w-full p-2' %>
+    <%= f.date_field :deadline, class: 'w-full p-2' %>
   </div>
-  <div class="w-2/12">
-    <%= f.submit class: 'p-2 text-lg text-white bg-blue-500 hover:bg-blue-400 rounded cursor-pointer float-right' %>
-  </div>
+  <%= f.submit 'Add', class: 'inline-block w-2/12 p-2 text-sm border border-blue-300 hover:border-blue-500 rounded cursor-pointer float-right' %>
 <% end %>

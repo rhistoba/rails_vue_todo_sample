@@ -12,10 +12,27 @@
   <div
     v-for="todo in todos"
     :key="`todo-${todo.id}`"
-    class="flex flex-wrap px-2 py-2 text-xl border-t last:border-b border-gray-300"
+    class="flex flex-wrap justify-between py-2 text-xl border-t last:border-b border-gray-300"
   >
-    <div class="w-6/12 pr-2">{{todo.title}}</div>
+    <div class="w-6/12 pr-2" :class="{'line-through': todo.status === 'done'}">
+      {{todo.title}}
+    </div>
     <div class="w-4/12 pr-2">{{todo.deadline}}</div>
-    <div class="w-2/12"></div>
+    <button type="button"
+            v-show="todo.status === 'in_progress'"
+            @click="changeToDone(todo)"
+            class="inline-block w-2/12 text-sm border border-teal-300 hover:border-teal-500 rounded px-2 py-1"
+            style="display: none;"
+    >
+      Done
+    </button>
+    <button type="button"
+            v-show="todo.status === 'done'"
+            @click="changeToInProgress(todo)"
+            class="inline-block w-2/12 text-sm border border-orange-300 hover:border-orange-500 rounded px-2 py-1"
+            style="display: none;"
+    >
+      Undo
+    </button>
   </div>
 </div>

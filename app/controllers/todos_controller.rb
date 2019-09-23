@@ -1,4 +1,6 @@
 class TodosController < ApplicationController
+  before_action :set_todo, only: %i(change_status)
+
   def index
     @todos = Todo.all
     @new_todo = Todo.new
@@ -14,6 +16,11 @@ class TodosController < ApplicationController
     end
   end
 
+  def change_status
+    @todo.update!(status: params[:status])
+    render json: @todo
+  end
+
   private
 
   def todo_params
@@ -21,5 +28,9 @@ class TodosController < ApplicationController
       :title,
       :deadline
     )
+  end
+
+  def set_todo
+    @todo = Todo.find(params[:id])
   end
 end
