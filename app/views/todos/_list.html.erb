@@ -1,0 +1,21 @@
+<%
+  init_data = @todos.map do |todo|
+    {
+      id: todo.id,
+      title: todo.title,
+      status: todo.status,
+      deadline: todo.deadline.present? ? todo.deadline.strftime("%Y/%m/%d") : nil
+    }
+  end
+%>
+<div id="vue-todo" data-init=<%= init_data.to_json %>>
+  <div
+    v-for="todo in todos"
+    :key="`todo-${todo.id}`"
+    class="flex flex-wrap px-2 py-2 text-xl border-t last:border-b border-gray-300"
+  >
+    <div class="w-6/12 pr-2">{{todo.title}}</div>
+    <div class="w-4/12 pr-2">{{todo.deadline}}</div>
+    <div class="w-2/12"></div>
+  </div>
+</div>

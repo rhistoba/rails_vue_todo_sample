@@ -1,12 +1,13 @@
 <div>
-  <div id="vue-todo" data-init=<%= @todos.to_json(only: [:id, :title, :status, :deadline]) %>>
-    <div v-for="todo in todos" :key="`todo-${todo.id}`">
-      <p>{{todo.title}}</p>
-    </div>
+  <h1 class="text-4xl font-bold my-4 text-center">
+    Rails+Vue.js Todo Sample
+  </h1>
+
+  <div class="my-4">
+    <%= render 'form' %>
   </div>
-  <%= form_with model: @new_todo, local: true do |f| %>
-    <%= f.text_field :title %>
-    <%= f.datetime_field :deadline %>
-    <%= f.submit %>
-  <% end %>
+
+  <div class="my-4">
+    <%= render 'list' %>
+  </div>
 </div>
