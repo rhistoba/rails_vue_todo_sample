@@ -1,0 +1,7 @@
+<div>
+  <div id="vue-todo" data-init=<%= @todos.to_json(only: [:id, :title, :status, :deadline]) %>>
+    <div v-for="todo in todos" :key="`todo-${todo.id}`">
+      <p>{{todo.title}}</p>
+    </div>
+  </div>
+</div>
